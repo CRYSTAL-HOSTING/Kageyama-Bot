@@ -88,8 +88,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("⚡ HELP", callback_data = "about"),
+                    InlineKeyboardButton("🛑 CLOSE", callback_data = "close")
                 ]
             ]
         )
@@ -123,7 +123,7 @@ async def not_joined(client: Client, message: Message):
     buttons = [
         [
             InlineKeyboardButton(
-                "Join Channel",
+                "🔰 JOIN CHANNEL",
                 url = client.invitelink)
         ]
     ]
@@ -131,7 +131,7 @@ async def not_joined(client: Client, message: Message):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text = 'Try Again',
+                    text = '♻️ TRY AGAIN',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
             ]
@@ -169,7 +169,7 @@ async def send_text(client: Bot, message: Message):
         deleted = 0
         unsuccessful = 0
         
-        pls_wait = await message.reply("<i>Broadcasting Message.. This will Take Some Time</i>")
+        pls_wait = await message.reply("<i>📣 Broadcasting Message.. This will Take Some Time ⏳</i>")
         for chat_id in query:
             try:
                 await broadcast_msg.copy(chat_id)
@@ -189,13 +189,13 @@ async def send_text(client: Bot, message: Message):
                 pass
             total += 1
         
-        status = f"""<b><u>Broadcast Completed</u>
+        status = f"""<b><u>📣 Broadcast Completed !</u>
 
-Total Users: <code>{total}</code>
-Successful: <code>{successful}</code>
-Blocked Users: <code>{blocked}</code>
-Deleted Accounts: <code>{deleted}</code>
-Unsuccessful: <code>{unsuccessful}</code></b>"""
+👥 Total Users: <code>{total}</code>
+✅ Successful: <code>{successful}</code>
+🛑 Blocked Users: <code>{blocked}</code>
+💀 Deleted Accounts: <code>{deleted}</code>
+❌ Unsuccessful: <code>{unsuccessful}</code></b>"""
         
         return await pls_wait.edit(status)
 
